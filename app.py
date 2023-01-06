@@ -84,7 +84,7 @@ async def refresh_msg(nickname, msg_box, fernet, salt):
         last_idx = len(chat_msgs)
 
 if __name__ == "__main__":
-     import argparse
+    import argparse
     from pywebio.platform.tornado_http import start_server as start_http_server
     from pywebio import start_server as start_ws_server
 
@@ -99,3 +99,4 @@ if __name__ == "__main__":
         # Since some cloud server may close idle connections (such as heroku),
         # use `websocket_ping_interval` to  keep the connection alive
         start_ws_server(main, port=args.port, websocket_ping_interval=30)
+        #start_server(main, debug=True, port=8080, cdn=False)
