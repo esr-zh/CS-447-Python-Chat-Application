@@ -10,7 +10,5 @@ handlers:
 libraries:
   - name: pycrypto
     version: latest
-  - name: pycryptodome
-    version: latest
   - name: pywebio
     version: latest
