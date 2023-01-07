@@ -43,12 +43,12 @@ async def main():
     put_scrollable(msg_box, height=300, keep_bottom=True)
 
     nickname = await input("Enter chat", required=True, placeholder="Your name",
-                           validate=lambda n: "This nickname is already taken!" if n in online_users or n == '📢' else None)
+                           validate=lambda n: "This nickname is already taken!" if n in online_users or n == '👤' else None)
 
     online_users.add(nickname)
     encrypted_message = fernet.encrypt(f'`{nickname}` joined the chat!'.encode())
-    chat_msgs.append(('📢', encrypted_message))
-    msg_box.append(put_markdown(f'📢 `{nickname}` joined the chat'))
+    chat_msgs.append(('👤', encrypted_message))
+    msg_box.append(put_markdown(f'👤 `{nickname}` joined the chat'))
     refresh_task = run_async(refresh_msg(nickname, msg_box, fernet, salt))
     while True:
         data = await input_group("💭 New message", [
@@ -67,9 +67,9 @@ async def main():
 
     online_users.remove(nickname)
     toast("You left the chat!")
-    msg_box.append(put_markdown(f'📢 User `{nickname}` left chat!'))
+    msg_box.append(put_markdown(f'👤 User `{nickname}` left chat!'))
     encrypted_message = fernet.encrypt(f'User `{nickname}` left chat!'.encode())
-    chat_msgs.append(('📢', encrypted_message))
+    chat_msgs.append(('👤', encrypted_message))
 
     put_buttons(['Rejoin'], onclick=lambda btn: run_js('window.location.reload()'))
 
