@@ -92,9 +92,10 @@ if __name__ == "__main__":
     parser.add_argument("--http", action="store_true", default=False, help='Whether to enable http protocol for communicates')
     args = parser.parse_args()
     if args.http:
-        start_http_server(main, port=args.port)
-    else:
+        # start_http_server(main, port=args.port)
+        start_ws_server(main, port=args.port, websocket_ping_interval=30)
+    # else:
         # Since some cloud server may close idle connections (such as heroku),
         # use `websocket_ping_interval` to  keep the connection alive
-        start_ws_server(main, port=args.port, websocket_ping_interval=30)
+        # start_ws_server(main, port=args.port, websocket_ping_interval=30)
     #start_server(main, debug=True, port=8080, cdn=False)
