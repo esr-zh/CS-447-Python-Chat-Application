@@ -8,6 +8,7 @@ from pywebio.input import *
 from pywebio.output import *
 from pywebio.session import defer_call, info as session_info, run_async, run_js
 from pywebio.platform.tornado_http import start_server as start_http_server
+from pywebio.platform.flask import start_server as start_flask_server #flask
 from pywebio import start_server as start_ws_server
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
@@ -92,8 +93,9 @@ if __name__ == "__main__":
     parser.add_argument("--http", action="store_true", default=False, help='Whether to enable http protocol for communicates')
     args = parser.parse_args()
     if args.http:
-        start_http_server(main, port=args.port)
+        # start_http_server(main, port=args.port)
         # start_ws_server(main, port=args.port, websocket_ping_interval=30)
+        start_flask_server(main, debug=True, port=args.port, cdn=False)
     else:
         # Since some cloud server may close idle connections (such as heroku),
         # use `websocket_ping_interval` to  keep the connection alive
