@@ -36,7 +36,7 @@ async def main():
     defer_call(lambda: session_info.update(fernet=fernet))
     defer_call(lambda: session_info.update(salt=salt))
     
-    put_markdown("## 🧊 Wellcome to ZAGGU!\nOnline chatroom")
+    put_markdown("## 🧊 Welcome to ZAGGU!\nOnline chatroom")
 
     msg_box = output()
     put_scrollable(msg_box, height=300, keep_bottom=True)
