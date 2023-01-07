@@ -94,7 +94,7 @@ if __name__ == "__main__":
     if args.http:
         start_http_server(main, port=args.port)
         # start_ws_server(main, port=args.port, websocket_ping_interval=30)
-    # else:
+    else:
         # Since some cloud server may close idle connections (such as heroku),
         # use `websocket_ping_interval` to  keep the connection alive
         start_ws_server(main, port=args.port, websocket_ping_interval=30)
